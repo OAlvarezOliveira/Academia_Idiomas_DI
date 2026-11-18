@@ -53,7 +53,6 @@ public class LoginView extends BorderPane {
         rbSecretaria.setToggleGroup(grupoPerfil);
         rbDireccion.setToggleGroup(grupoPerfil);
 
-
         GridPane radiobuttons = new GridPane();
         radiobuttons.setHgap(10);
         radiobuttons.setVgap(10);
