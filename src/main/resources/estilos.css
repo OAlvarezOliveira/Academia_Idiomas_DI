@@ -6,7 +6,8 @@
 
 /* Fondo de las ventanas: color #f6f4ef y letra de 14px */
 .root {
-
+    -fx-background-color: #f6f4ef;
+    -fx-font-size: 14px;
 }
 
 /* Título «Academia de Idiomas»: 28px, negrita, color #7a2e3a

@@ -33,8 +33,7 @@ public class LoginView extends BorderPane {
     public Button btnEntrar = new Button("Entrar");
     public Button btnSalir = new Button("Salir");
 
-    public Label piePagina1 = new Label("© " + anio + " Academia de Idiomas");
-    public Label piePagina2 = new Label("Contacto: info@academia.es | +34 988 111 222");
+    public Label piePagina1 = new Label("© " + anio + " Academia de Idiomas Contacto: info@academia.es | +34 988 111 222");
 
 
     public LoginView() {
@@ -62,12 +61,12 @@ public class LoginView extends BorderPane {
         radiobuttons.add(new VBox(rbProfesor, rbSecretaria, rbDireccion), 1, 2);
         radiobuttons.add(new HBox(btnEntrar, btnSalir), 1, 3);
 
-        HBox centro = new HBox(30, imagen, radiobuttons);
+        HBox centro = new HBox(30, radiobuttons,imagen );
         centro.setAlignment(Pos.CENTER);
         setCenter(centro);
 
 
-        VBox pie = new VBox( piePagina1, piePagina2);
+        HBox pie = new HBox( piePagina1);
         pie.setAlignment(Pos.CENTER);
         pie.getStyleClass().add("pie");
         setBottom(pie);
