@@ -23,17 +23,17 @@ public class LoginView extends BorderPane {
     public TextField txtCodigo = new TextField();
 
     public Label grupoRadioButtons = new Label("Seleccione su perfil");
-    public RadioButton rbProfesor=new RadioButton("Profesor");
-    public RadioButton rbSecretaria=new RadioButton("Profesor");
-    public RadioButton rbDireccion=new RadioButton("Profesor");
+    public RadioButton rbProfesor = new RadioButton("Profesor");
+    public RadioButton rbSecretaria = new RadioButton("Secretaría");
+    public RadioButton rbDireccion = new RadioButton("Dirección");
     public ToggleGroup grupoPerfil = new ToggleGroup();
 
-    public ImageView imagen;
+    public ImageView imagen = new ImageView();
 
     public Button btnEntrar = new Button("Entrar");
     public Button btnSalir = new Button("Salir");
 
-    public Label piePagina1 = new Label("@"+anio+"Academia de Idiomas");
+    public Label piePagina1 = new Label("© " + anio + " Academia de Idiomas");
     public Label piePagina2 = new Label("Contacto: info@academia.es | +34 988 111 222");
 
 
@@ -44,8 +44,7 @@ public class LoginView extends BorderPane {
         setTop(lblTitulo);
 
         // Centro: imagen + formulario
-        imagen.setImage(new Image(getClass()
-                .getResource("/com/example/biblioteca/libro1.png").toExternalForm()));
+        imagen.setImage(new Image(getClass().getResource("/logo-academia.png").toExternalForm()));
         imagen.setFitWidth(140);
         imagen.setPreserveRatio(true);
 

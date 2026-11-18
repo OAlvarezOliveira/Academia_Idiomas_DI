@@ -10,7 +10,7 @@ public class ModeloProfesores {
     private ObservableList<Profesor> listaProfesores = FXCollections.observableArrayList();
 
 
-    public ModeloProfesores(ObservableList<Profesor> listaProfesores) {
+    public ModeloProfesores() {
 
         listaProfesores.add(new Profesor("PO1","Laura Vidal"));
         listaProfesores.add(new Profesor("PO2","Tom Baker"));
