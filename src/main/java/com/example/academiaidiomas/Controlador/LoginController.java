@@ -4,8 +4,8 @@ import com.example.academiaidiomas.Modelo.ModeloAlumnos;
 import com.example.academiaidiomas.Modelo.ModeloProfesores;
 import com.example.academiaidiomas.Vista.AlumnosView;
 import com.example.academiaidiomas.Vista.LoginView;
+import com.example.academiaidiomas.Vista.VentanaAlumnos;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 
 
 public class LoginController {
-
-    private static boolean claveOK = false;
 
     public LoginController(Stage stage, LoginView vista, ModeloAlumnos modeloAlumnos, ModeloProfesores modeloProfesores) {
 
@@ -31,7 +29,6 @@ public class LoginController {
             } else if (logitud < 2 && (tecla.matches("[0-9]"))) {
                 e.consume();
             }
-            claveOK = true;
         });
 
         vista.btnEntrar.setOnAction(event -> {
@@ -40,12 +37,15 @@ public class LoginController {
                 Alert alerta1 = new Alert(Alert.AlertType.INFORMATION);
                 alerta1.setContentText("El código de empleado no puede estar vacío");
                 alerta1.showAndWait();
+                vista.txtCodigo.clear();
+                return;
             }
-            if(!claveOK){
+            if (!vista.txtCodigo.getText().matches("[a-zA-Z]{2}[0-9]{4}")) {
                 Alert alerta1 = new Alert(Alert.AlertType.INFORMATION);
                 alerta1.setContentText("El código debe tener 6 caracteres : 2 Letras y 4 dígitos");
                 alerta1.showAndWait();
-
+                vista.txtCodigo.clear();
+                return;
             }
 
             if(!(vista.rbProfesor.isSelected()) && !(vista.rbSecretaria.isSelected()) && !(vista.rbDireccion.isSelected()) ){
@@ -53,8 +53,9 @@ public class LoginController {
                 alerta2.setContentText("El perfil es obligatorio.Por favor ,selecciona un perfil");
                 alerta2.showAndWait();
                 vista.rbDireccion.setSelected(true);
+                return;
             }
-            crearVentanaAlumnos();
+            crearVentanaAlumnos(stage, modeloAlumnos, modeloProfesores);
 
         });
 
@@ -65,16 +66,11 @@ public class LoginController {
 
     }
 
-    private void crearVentanaAlumnos() {
-        Stage stage2 = new Stage();
-        ModeloAlumnos modeloAlumnos = new ModeloAlumnos();
-        ModeloProfesores modeloProfesores = new ModeloProfesores();
+    private void crearVentanaAlumnos(Stage stage, ModeloAlumnos modeloAlumnos, ModeloProfesores modeloProfesores) {
         AlumnosView vistaAlumnos = new AlumnosView();
-        new AlumnosController(stage2, vistaAlumnos, modeloAlumnos, modeloProfesores);
-        Scene escena = new Scene(vistaAlumnos);
-        escena.getStylesheets().add(getClass().getResource("/estilos.css").toExternalForm());
-        stage2.setScene(escena);
-        stage2.showAndWait();
+        new AlumnosController(vistaAlumnos, modeloAlumnos, modeloProfesores);
+        VentanaAlumnos ventana = new VentanaAlumnos(stage, vistaAlumnos);
+        ventana.showAndWait();
     }
 
 
